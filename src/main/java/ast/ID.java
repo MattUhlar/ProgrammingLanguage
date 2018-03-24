@@ -1,0 +1,13 @@
+package ast;
+
+public class ID implements ASTNode {
+    private final String id;
+
+    public ID(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+}

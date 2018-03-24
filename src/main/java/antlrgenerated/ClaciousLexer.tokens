@@ -1,0 +1,11 @@
+PRINT=1
+LET=2
+ID=3
+EQ=4
+NUMBER=5
+SEMI_COLON=6
+WS=7
+'print'=1
+'let'=2
+'='=4
+';'=6
