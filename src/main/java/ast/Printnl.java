@@ -1,15 +1,13 @@
 package ast;
 
-import java.util.List;
-
 public class Printnl implements ASTNode {
-    private final List<ASTNode> nodes;
+    private final ASTNode expr;
 
-    public Printnl(List<ASTNode> nodes) {
-        this.nodes = nodes;
+    public Printnl(ASTNode expr) {
+        this.expr = expr;
     }
 
-    public List<ASTNode> getNodes() {
-        return this.nodes;
+    public ASTNode getExpr() {
+        return this.expr;
     }
 }

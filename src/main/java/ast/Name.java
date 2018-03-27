@@ -1,13 +1,13 @@
 package ast;
 
-public class AssName implements ASTNode {
+public class Name implements ASTNode {
     private final String name;
 
-    public AssName(String name) {
+    public Name(String name) {
         this.name = name;
     }
 
-    public String getName() {
+    public String getId() {
         return this.name;
     }
 }

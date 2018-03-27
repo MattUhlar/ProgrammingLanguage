@@ -28,7 +28,7 @@ public class ClaciousParser extends Parser {
 		null, "'print'", "'let'", null, "'='", null, "';'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "PRINT", "LET", "ID", "EQ", "NUMBER", "SEMI_COLON", "WS"
+		null, "PRINT", "LET", "Name", "EQ", "NUMBER", "SEMI_COLON", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 

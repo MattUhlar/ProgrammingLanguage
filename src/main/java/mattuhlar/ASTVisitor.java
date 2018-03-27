@@ -4,33 +4,39 @@ import antlrgenerated.ClaciousBaseVisitor;
 import antlrgenerated.ClaciousParser;
 import ast.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ASTVisitor extends ClaciousBaseVisitor<ASTNode> {
     @Override
     public ASTNode visitProgram(ClaciousParser.ProgramContext ctx) {
-        return new Program(ctx.children.stream().map(this::visit).filter(Objects::nonNull).collect(Collectors.toList()));
+        List<ASTNode> nodes = ctx.children.stream()
+                .map(this::visit)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        return new Program(new Stmt(nodes));
     }
 
     @Override
     public ASTNode visitPrintStmt(ClaciousParser.PrintStmtContext ctx) {
-        return new Printnl(ctx.children.stream().map(this::visit).collect(Collectors.toList()));
+        return new Printnl(visit(ctx.expr()));
     }
 
     @Override
     public ASTNode visitExprStmt(ClaciousParser.ExprStmtContext ctx) {
-        return new Expr(visit(ctx.expr()));
+        return visit(ctx.expr());
     }
 
     @Override
     public ASTNode visitSimpleAssign(ClaciousParser.SimpleAssignContext ctx) {
-        return new Assign(new AssName(visit(ctx.ID())), new Expr(visit(ctx.expr())));
+        return new Assign(new AssName(ctx.ID().toString()), visit(ctx.expr()));
     }
 
     @Override
     public ASTNode visitId(ClaciousParser.IdContext ctx) {
-        return new ID(ctx.ID().toString());
+        return new Name(ctx.ID().toString());
     }
 
     @Override

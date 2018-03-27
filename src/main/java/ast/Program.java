@@ -1,15 +1,13 @@
 package ast;
 
-import java.util.List;
-
 public class Program implements ASTNode {
-    private final List<ASTNode> stmts;
+    private final ASTNode stmts;
 
-    public Program(List<ASTNode> stmts) {
+    public Program(ASTNode stmts) {
         this.stmts = stmts;
     }
 
-    public List<ASTNode> getStmts() {
+    public ASTNode getStmt() {
         return this.stmts;
     }
 }
